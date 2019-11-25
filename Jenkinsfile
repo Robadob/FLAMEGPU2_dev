@@ -60,5 +60,15 @@ pipeline {
                 }
             }
         }
+        
+        stage('CUDA MemCheck') {
+            steps {
+                sh 'rm -rf build'
+                sh 'mkdir -p build'
+                dir("build") {
+                    sh 'cuda-memcheck --leak-check full ./bin/linux-x64/Debug/tests'
+                }
+            }
+        }
     }
 }
