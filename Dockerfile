@@ -39,7 +39,5 @@ RUN apt-get update --fix-missing && apt-get install -y \
 
 RUN pip3 install cpplint
 
-RUN alias sh='bash -i'
-
 CMD ["/bin/bash"]
 WORKDIR /stage

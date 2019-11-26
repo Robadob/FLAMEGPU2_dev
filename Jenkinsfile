@@ -37,8 +37,11 @@ pipeline {
                 dir("build") {
                     sh 'ls --color=always'
                     sh '''
-#!/bin/bash -i
-ls
+echo "#!/bin/bash -i
+ls" >> runls.sh
+chmod 777 runls.sh
+./runls.sh
+rm runls.sh
                     '''
                    sh "make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
                     archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
