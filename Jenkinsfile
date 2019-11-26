@@ -37,7 +37,8 @@ pipeline {
                 dir("build") {
                     sh 'ls --color=always'
                     sh 'ls'
-                   sh "make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
+                    sh 'cmake --build . -- -j8 -fdiagnostics-color=always
+                    // sh "make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
                     archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
                 }
             }
