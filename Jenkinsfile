@@ -36,7 +36,7 @@ pipeline {
             steps {
                 dir("build") {
                     sh 'ls --color=always'
-                    sh '/bin/bash -i -c "ls"'
+                    sh 'ls'
                    sh "make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
                     archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
                 }
