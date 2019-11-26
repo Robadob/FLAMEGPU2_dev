@@ -36,10 +36,6 @@ RUN apt-get update --fix-missing && apt-get install -y \
     graphviz \
     python3-pip \
     valgrind \
-    zsh
-
-# Replace bash with zsh (coloured output from shell scripts)
-RUN chsh -s /usr/bin/zsh
 
 RUN pip3 install cpplint
 
