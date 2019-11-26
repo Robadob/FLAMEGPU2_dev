@@ -36,7 +36,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("build") {
-                    sh 'ls --color=always'
+                    sh 'ls --color=always -l "which gcc"'
                     sh "export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01' && make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
                     archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
                 }
