@@ -38,6 +38,7 @@ pipeline {
                     sh 'ls --color=always'
                     sh '''
 echo "#!/bin/bash -i
+set -m
 ls" >> runls.sh
 chmod 777 runls.sh
 ./runls.sh
