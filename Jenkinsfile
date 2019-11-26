@@ -37,7 +37,7 @@ pipeline {
             steps {
                 dir("build") {
                     sh 'ls --color=always'
-                    sh ''''
+                    sh '''
                         #!/usr/bin/tty
                         ls
                     '''
