@@ -35,7 +35,7 @@ RUN apt-get update --fix-missing && apt-get install -y \
     doxygen \
     graphviz \
     python3-pip \
-    valgrind \
+    valgrind
 
 RUN pip3 install cpplint
 
