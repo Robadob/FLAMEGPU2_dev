@@ -36,7 +36,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("build") {
-                    sh 'make all docs -j8' // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
+                    sh 'echo -e "Default \\e[103mLight yellow" && make all docs -j8' // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
                     archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
                 }
             }
