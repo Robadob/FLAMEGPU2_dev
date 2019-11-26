@@ -1,9 +1,9 @@
 pipeline {
     agent { 
-        // dockerfile true
-        dockerfile {
-            args "--gpus device=${env.EXECUTOR_NUMBER}"
-        }
+        dockerfile true
+        //dockerfile {
+        //    args "--gpus device=1"
+        //}
     }
     options {
         ansiColor('xterm')
@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Initialise') {
             steps {
-                sh ''
+                echo "Running ${env.BUILD_ID} on executor ${env.EXECUTOR_NUMBER}"
             }
         }
         
