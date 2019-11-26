@@ -35,7 +35,9 @@ pipeline {
         stage("build") {
             steps {
                 dir("build") {
-                    cmake --build .
+                    cmake 
+                        installation: 'InSearchPath',
+                        arguments: '--build .'
                 }
             }
         }
