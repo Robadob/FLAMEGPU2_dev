@@ -1,9 +1,9 @@
 pipeline {
     agent { 
-        dockerfile true
-        // dockerfile {
-        //     args '-t'
-        // }
+        // dockerfile true
+        dockerfile {
+            args '--gpus \'"device=1,2"\''
+        }
     }
     options {
         ansiColor('xterm')
