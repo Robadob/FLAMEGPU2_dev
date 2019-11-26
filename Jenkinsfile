@@ -57,7 +57,7 @@ pipeline {
                 sh 'mkdir -p build'
                 dir("build") {
                     sh 'cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON -DSMS=52'
-                    sh 'make tests -j8'
+                    sh '#!/usr/bin/tty && make tests -j8'
                     sh 'valgrind --suppressions=../tools/valgrind-cuda-suppression.supp --error-exitcode=1 --leak-check=full --gen-suppressions=no ./bin/linux-x64/Debug/tests'
                 }
             }
