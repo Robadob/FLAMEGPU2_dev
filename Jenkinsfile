@@ -2,7 +2,7 @@ pipeline {
     agent { 
         // dockerfile true
         dockerfile {
-            args '--gpus \'"device=1,2"\''
+            args '--gpus "device=1"'
         }
     }
     options {
