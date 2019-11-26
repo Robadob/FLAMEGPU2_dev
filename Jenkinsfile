@@ -37,8 +37,8 @@ pipeline {
             steps {
                 dir("build") {
                     sh 'ls --color=always'
-                    sh 'set -i && ls'
-                    sh "set -i && make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
+                    sh '#!/usr/bin/tty ls'
+                    sh "#!/usr/bin/tty make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
                     archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
                 }
             }
@@ -57,7 +57,7 @@ pipeline {
                 sh 'mkdir -p build'
                 dir("build") {
                     sh 'cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON -DSMS=52'
-                    sh '#!/usr/bin/tty && make tests -j8'
+                    sh 'make tests -j8'
                     sh 'valgrind --suppressions=../tools/valgrind-cuda-suppression.supp --error-exitcode=1 --leak-check=full --gen-suppressions=no ./bin/linux-x64/Debug/tests'
                 }
             }
