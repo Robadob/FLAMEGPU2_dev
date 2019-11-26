@@ -47,7 +47,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'ls build/bin/linux-x64/Release/'
-                sh './build/bin/linux-x64/Release/tests'
+                sh './build/bin/linux-x64/Release/tests --gtest_color=yes'
             }
         }
         
