@@ -32,28 +32,19 @@ pipeline {
                 sh 'nvidia-smi'
             }
         }
-        stage("build") {
+        stage('Build') {
             steps {
                 dir("build") {
-                    cmake 
-                        installation: 'InSearchPath',
-                        arguments: '--build .'
+                    sh 'ls --color=always'
+                    sh '''
+#!/bin/bash -i
+ls
+                    '''
+                   sh "make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
+                    archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
                 }
             }
         }
-        //stage('Build') {
-        //    steps {
-        //        dir("build") {
-        //            sh 'ls --color=always'
-        //            sh '''
-        //                #!/bin/bash -i
-        //                ls
-        //            '''
-        //            sh "make all docs -j8" // CXXFLAGS="-fdiagnostics-color=always" // VERBOSE=1
-        //            archiveArtifacts artifacts: '**/bin/linux-x64/Release/*', fingerprint: true
-        //        }
-        //    }
-        //}
 
         stage('Test') {
             steps {
