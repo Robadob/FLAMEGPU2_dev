@@ -1,9 +1,10 @@
 pipeline {
     agent { 
-        dockerfile true
-        //dockerfile {
-        //    args "--gpus device=1"
-        //}
+        label 'maxwell'
+        //dockerfile true
+        dockerfile {
+            args "--gpus device=3"
+        }
     }
     options {
         ansiColor('xterm')
